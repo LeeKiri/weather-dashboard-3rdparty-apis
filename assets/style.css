@@ -1,0 +1,19 @@
+.searchHeading{
+    margin-top: 20px;
+    
+}
+.table{
+    margin-top: 20px;
+    width: 80%;
+}
+
+td{
+    padding: 20px !important;
+}
+
+.list-group{
+    margin: 30px;
+}
+.list-group-item{
+    padding: 15px;
+}

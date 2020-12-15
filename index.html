@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Weather Dashboard</span>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <div class="row">
+                    <h5 class="searchHeading">Search</h5>
+                </div>
+                <div class="row">
+                    <form class="d-flex">
+                        <input class="form-control me-2" id="searchInput" type="search" aria-label="Search">
+                        <button class="btn btn-primary" id="button" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                            height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                            d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                            <path fill-rule="evenodd"
+                                    d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                                </svg></button>
+                            </form>
+                </div>
+                
+                <div class="row">
+                    <aside>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="table-row"></td>
+                                </tr>
+                                <tr>
+                                    <td class="table-row"></td>
+                                </tr>
+                                <tr>
+                                    <td class="table-row"></td>
+                                </tr>
+                                <tr>
+                                    <td class="table-row"></td>
+                                </tr>
+                                <tr>
+                                    <td class="table-row"></td>
+                                </tr>
+                                <tr>
+                                    <td class="table-row"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </aside>
+                </div>
+            </div>
+            
+            
+            <div class="col-sm-9">
+                <div class="row">
+                    <article>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" id="city-date-icon">city date icon</li>
+                            <li class="list-group-item"id="temperature">Temperature: </li>
+                            <li class="list-group-item" id="humidity">Humidity: </li>
+                            <li class="list-group-item" id="windspeed">Windspeed: </li>
+                            <li class="list-group-item" id="uvIndex">UV Index: icon</li>
+                        </ul>
+                    </article>
+                </div>
+                
+                <div class="row">
+                    <section>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="cardDate"></h5>
+                                        <p class="card-text" id="cardIcon"></p>
+                                        <p class="card-text" id="cardTemp"></p>
+                                        <p class="card-text" id="cardHum"></p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="cardDate"></h5>
+                                        <p class="card-text" id="cardIcon"></p>
+                                        <p class="card-text" id="cardTemp"></p>
+                                        <p class="card-text" id="cardHum"></p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="cardDate"></h5>
+                                        <p class="card-text" id="cardIcon"></p>
+                                        <p class="card-text" id="cardTemp"></p>
+                                        <p class="card-text" id="cardHum"></p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="cardDate"></h5>
+                                        <p class="card-text" id="cardIcon"></p>
+                                        <p class="card-text" id="cardTemp"></p>
+                                        <p class="card-text" id="cardHum"></p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="cardDate"></h5>
+                                        <p class="card-text" id="cardIcon"></p>
+                                        <p class="card-text" id="cardTemp"></p>
+                                        <p class="card-text" id="cardHum"></p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="assets/script.js"></script>
+</body>
+
+</html>
