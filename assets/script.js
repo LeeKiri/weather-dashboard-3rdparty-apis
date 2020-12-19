@@ -27,7 +27,7 @@ $(document).ready(function () {
                 var results = response;
                 console.log(results);
                 var cityName = results.city.name;
-                var dateToday = results.list[3].dt_txt;
+                var dateToday = moment(results.list[3].dt_txt, "YYYY-MM-DD HH:mm").format("DD-MM-YYYY");
                 var iconCode = results.list[3].weather[0].icon;
                 var iconToday = $("<img>").attr("src", "https://openweathermap.org/img/w/" + iconCode + ".png").attr("width", 50).attr("height", 50);
                 $("#city-date-icon").text(cityName + "   " + dateToday).append(iconToday);
@@ -90,14 +90,34 @@ $(document).ready(function () {
                                 break;
                         }
                     })
+                var id = 0
 
                 //display 5 day forecast
-                // for(i=0; i<5; i+6){
-                // var dateToUse = results.list[i].dt_txt;
-                // console.log(dateToUse);
-                // $("#cardDate")
+                for (i = 0; i < results.list.length; i++) {
+                    if (results.list[i].dt_txt.includes("12:00:00")){
+                        var dateToUse = moment(results.list[i].dt_txt, "YYYY-MM-DD HH:mm").format("DD-MM-YYYY");
+                        $("#cardDate" + id).text(dateToUse);
+                        var iconcodeNew = results.list[i].weather[0].icon;
+                    
+                        var iconFiveDay = $("<img>").attr("src", "https://openweathermap.org/img/w/" + iconcodeNew + ".png").attr("width", 50).attr("height", 50);
+                        $("#cardIcon" + id).html(iconFiveDay);
 
-                // }
+                        var tempFiveDay= results.list[i].main.temp;
+                        var tempInt5 = parseInt(tempFiveDay - 273.15);
+                        $("#cardTemp" + id).text("Temp " + tempInt5 + "°C");
+
+                        var humFiveDay = results.list[i].main.humidity;
+                        $("#cardHum" + id).text("Humidity " + humFiveDay + "%");
+
+
+
+
+
+
+                        id++
+                    }
+
+                }
             })
 
         //local storage to display search history table
@@ -113,5 +133,4 @@ $(document).ready(function () {
 
         // }
     });
-
-    
+});
