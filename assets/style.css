@@ -17,3 +17,12 @@ td{
 .list-group-item{
     padding: 15px;
 }
+#city-date-icon{
+    font-size: xx-large;
+    font-weight: 600;
+}
+.card-body{
+    background-color: #007bff ;
+    color: white;
+    border-radius: .5rem;
+}
