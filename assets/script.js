@@ -5,11 +5,13 @@ $(document).ready(function () {
     
     $("#button").on("click", function (e) {
         e.preventDefault()
-        var userCity = $("#searchInput").val().trim();
+        var userCity = capitalize($("#searchInput").val().trim());
         storedCities.push(userCity);
         localStorage.setItem("City", JSON.stringify(storedCities));
         var newLiPrepend = document.createElement("li");
         newLiPrepend.textContent = userCity;
+        newLiPrepend.setAttribute("data-q", userCity);
+
         $("#storedList").prepend(newLiPrepend);
         queryResults(userCity);
     });
@@ -54,13 +56,13 @@ $(document).ready(function () {
 
                         switch (Math.floor(UVresults)) {
                             case 0:
-                                $("li span").css("background-color", "green");
+                                $("li span").css("background-color", "LimeGreen");
                                 break;
                             case 1:
-                                $("li span").css("background-color", "green");
+                                $("li span").css("background-color", "LimeGreen");
                                 break;
                             case 2:
-                                $("li span").css("background-color", "green");
+                                $("li span").css("background-color", "LimeGreen");
                                 break;
                             case 3:
                                 $("li span").css("background-color", "yellow");
@@ -78,13 +80,13 @@ $(document).ready(function () {
                                 $("li span").css("background-color", "orange");
                                 break;
                             case 8:
-                                $("li span").css("background-color", "red");
+                                $("li span").css("background-color", "Tomato");
                                 break;
                             case 9:
-                                $("li span").css("background-color", "red");
+                                $("li span").css("background-color", "Tomato");
                                 break;
                             case 10:
-                                $("li span").css("background-color", "red");
+                                $("li span").css("background-color", "Tomato");
                                 break;
                         }
                     })
@@ -115,16 +117,25 @@ $(document).ready(function () {
             })
     };
 
+
+
    
     function loadStorage() {
         for (i = 0; i < storedCities.length; i++) {
             var cityToDisplay = storedCities[i];
             var newLi = document.createElement("li");
             newLi.textContent = cityToDisplay;
+            newLi.setAttribute("data-q", cityToDisplay);
             $("#storedList").append(newLi);
         }
     }
     function init() {
         loadStorage()
     }
+    $("#storedList").on("click", function (e) {
+        queryResults(e.target.dataset.q);
+    })
+    function capitalize(city) {
+        return city.charAt(0).toUpperCase() + city.slice(1);
+      }
 });
