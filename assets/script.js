@@ -1,29 +1,27 @@
 $(document).ready(function () {
-    //init();
-
-    //when the search button is clicked this code runs
-var storedCities = JSON.parse(localStorage.getItem("City")) || [];
-
+    var storedCities = JSON.parse(localStorage.getItem("City")) || [];
+    
+    init();
+    
     $("#button").on("click", function (e) {
         e.preventDefault()
         var userCity = $("#searchInput").val().trim();
         storedCities.push(userCity);
         localStorage.setItem("City", JSON.stringify(storedCities));
+        var newLiPrepend = document.createElement("li");
+        newLiPrepend.textContent = userCity;
+        $("#storedList").prepend(newLiPrepend);
+        queryResults(userCity);
+    });
 
-        //displayContents();
-
-
-        // with the user input we build the API query and send it
+    function queryResults(queryCity) {
         var APIkey = "526092ea9b2c65dd4c4d6ee0811a5950"
-        var queryURLFiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + userCity + "&appid=" + APIkey
+        var queryURLFiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + queryCity + "&appid=" + APIkey
 
         $.ajax({
             url: queryURLFiveDay,
             method: "GET"
-        })
-            //with the API response we get the data we want and display it on screen
-
-            .then(function (response) {
+        }).then(function (response) {
                 var results = response;
                 console.log(results);
                 var cityName = results.city.name;
@@ -90,19 +88,20 @@ var storedCities = JSON.parse(localStorage.getItem("City")) || [];
                                 break;
                         }
                     })
+
                 var id = 0
 
                 //display 5 day forecast
                 for (i = 0; i < results.list.length; i++) {
-                    if (results.list[i].dt_txt.includes("12:00:00")){
+                    if (results.list[i].dt_txt.includes("12:00:00")) {
                         var dateToUse = moment(results.list[i].dt_txt, "YYYY-MM-DD HH:mm").format("DD-MM-YYYY");
                         $("#cardDate" + id).text(dateToUse);
                         var iconcodeNew = results.list[i].weather[0].icon;
-                    
+
                         var iconFiveDay = $("<img>").attr("src", "https://openweathermap.org/img/w/" + iconcodeNew + ".png").attr("width", 50).attr("height", 50);
                         $("#cardIcon" + id).html(iconFiveDay);
 
-                        var tempFiveDay= results.list[i].main.temp;
+                        var tempFiveDay = results.list[i].main.temp;
                         var tempInt5 = parseInt(tempFiveDay - 273.15);
                         $("#cardTemp" + id).text("Temp " + tempInt5 + "°C");
 
@@ -114,19 +113,18 @@ var storedCities = JSON.parse(localStorage.getItem("City")) || [];
 
                 }
             })
+    };
 
-        //local storage to display search history table
-        console.log(storedCities);
-
-        //onclick function to display contents when search history table is clicked
-
-        // when the page loads this tells the browser what to display from local storage
-
-        // function init() {
-        //     loadStorage()
-        // }
-
-
-        // }
-    });
+   
+    function loadStorage() {
+        for (i = 0; i < storedCities.length; i++) {
+            var cityToDisplay = storedCities[i];
+            var newLi = document.createElement("li");
+            newLi.textContent = cityToDisplay;
+            $("#storedList").append(newLi);
+        }
+    }
+    function init() {
+        loadStorage()
+    }
 });

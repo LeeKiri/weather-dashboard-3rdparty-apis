@@ -2,13 +2,16 @@
     margin-top: 20px;
     
 }
-.table{
+#indexColor{
+    padding: 5px;
+}
+#storedList{
     margin-top: 20px;
     width: 80%;
 }
 
-td{
-    padding: 20px !important;
+li{
+    padding: 10px;
 }
 
 .list-group{

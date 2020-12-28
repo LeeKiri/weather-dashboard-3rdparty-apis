@@ -1,0 +1,29 @@
+pseudocode
+
+create HTML with 1= header 2= table: cities(aside) 3= div: city weather info (section) 4= 5day forecast divs 5= search input with button and icon.
+create CSS -classes for UV conditions and style HTML
+
+javascript
+button click event listener to get input and send query to the API with the city selected.
+
+display the city in the search history table and save it to local storage in an array.
+ 
+create on click event for search table to send another query to API and repeat display on screen function. 
+
+get information for div and display on screen. 
+date
+icon
+temperature
+humidity
+windspeed
+UV index
+
+get information for 5 day forecast and display on screen
+date 
+icon
+temperature
+humidity
+
+on page reload display search history and empty HTML fields with place holders
+
+
