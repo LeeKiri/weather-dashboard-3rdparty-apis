@@ -2,7 +2,7 @@ $(document).ready(function () {
     //init();
 
     //when the search button is clicked this code runs
-    var storedCities = [];
+var storedCities = JSON.parse(localStorage.getItem("City")) || [];
 
     $("#button").on("click", function (e) {
         e.preventDefault()
@@ -109,11 +109,6 @@ $(document).ready(function () {
                         var humFiveDay = results.list[i].main.humidity;
                         $("#cardHum" + id).text("Humidity " + humFiveDay + "%");
 
-
-
-
-
-
                         id++
                     }
 
@@ -121,6 +116,7 @@ $(document).ready(function () {
             })
 
         //local storage to display search history table
+        console.log(storedCities);
 
         //onclick function to display contents when search history table is clicked
 
