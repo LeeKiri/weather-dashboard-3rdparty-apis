@@ -28,7 +28,6 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             var results = response;
-            console.log(results);
             var cityName = results.city.name;
             var dateToday = moment(results.list[3].dt_txt, "YYYY-MM-DD HH:mm").format("DD-MM-YYYY");
             var iconCode = results.list[3].weather[0].icon;
